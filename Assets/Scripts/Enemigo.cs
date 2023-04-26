@@ -1,3 +1,7 @@
+
+//  https://github.com/luissancar/J2dSMR
+
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +9,7 @@ using UnityEngine;
 
 public class Enemigo : MonoBehaviour
 {
-    public GameObject enemigo;
+    
     public int velocidad;
     public Vector3 posicionInicio;
     public Vector3 posicionFinal;
@@ -15,6 +19,11 @@ public class Enemigo : MonoBehaviour
     public int topeY;
 
 
+    private SpriteRenderer sprite;
+
+    public GameObject player;
+
+
 
     void Start()
     {
@@ -22,14 +31,27 @@ public class Enemigo : MonoBehaviour
         posicionFinal = new Vector3(posicionInicio.x + topeX,
             posicionInicio.y + topeY, posicionInicio.z);
         moviendoAFin = true;
-        velocidad = 5;
-        
+        sprite = GetComponent<SpriteRenderer>();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         MoverEnemigo();
+        VerPlayer();
+    }
+
+    private void VerPlayer()
+    {
+        if (player == null)
+            return;
+        if (player.transform.position.x 
+            < transform.position.x)
+            sprite.flipX = false;
+        else
+            sprite.flipX = true;
     }
 
     private void MoverEnemigo()

@@ -11,13 +11,16 @@ public class Enemigo : MonoBehaviour
     public Vector3 posicionFinal;
     private bool moviendoAFin;
 
+    public int topeX;
+    public int topeY;
+
 
 
     void Start()
     {
         posicionInicio = transform.position;
-        posicionFinal = new Vector3(posicionInicio.x,
-            posicionInicio.y + 4, posicionInicio.y);
+        posicionFinal = new Vector3(posicionInicio.x + topeX,
+            posicionInicio.y + topeY, posicionInicio.z);
         moviendoAFin = true;
         velocidad = 5;
         
@@ -35,6 +38,14 @@ public class Enemigo : MonoBehaviour
             posicionFinal : posicionInicio;
         transform.position = Vector3.MoveTowards(transform.position,
             posicionDestino, velocidad * Time.deltaTime);
+        if (transform.position == posicionFinal) 
+        {
+            moviendoAFin=false;
+        }
+        if (transform.position == posicionInicio)
+        {
+            moviendoAFin = true;
+        }
     }
 }
 

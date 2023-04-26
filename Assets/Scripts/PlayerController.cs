@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -65,4 +66,20 @@ public class PlayerController : MonoBehaviour
     {
         tocandoSuelo = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemigo")
+        {
+            SceneManager.LoadScene(SceneManager
+            .GetActiveScene().buildIndex);
+        }
+    }
+
 }
+
+
+
+
+
+

@@ -1909,9 +1909,11 @@ GameObject:
   m_Component:
   - component: {fileID: 476822757}
   - component: {fileID: 476822756}
+  - component: {fileID: 476822758}
+  - component: {fileID: 476822759}
   m_Layer: 0
   m_Name: crab-idle-1
-  m_TagString: Untagged
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1976,13 +1978,47 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476822755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.776668, y: 2.926274, z: 0}
+  m_LocalPosition: {x: 2.776668, y: 1.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476822758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476822755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4b037a70429fe45914cf6905d170a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemigo: {fileID: 0}
+  velocidad: 0
+  posicionInicio: {x: 0, y: 0, z: 0}
+  posicionFinal: {x: 0, y: 0, z: 0}
+  topeX: 0
+  topeY: 5
+--- !u!58 &476822759
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476822755}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07213962, y: -0.12263739}
+  serializedVersion: 2
+  m_Radius: 0.9445245
 --- !u!1 &478857202
 GameObject:
   m_ObjectHideFlags: 0
@@ -7026,7 +7062,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464195051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13869466, y: 0.8847123, z: 0.037472304}
+  m_LocalPosition: {x: -14.84, y: 0.8847123, z: 0.037472304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

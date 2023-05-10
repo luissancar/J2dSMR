@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private bool tocandoSuelo;
 
+    public AudioSource sonidoSalto;
+
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) &&
             tocandoSuelo)
         {
+            sonidoSalto.Play();
             player.AddForce(Vector2.up * fuerzaSalto,
                 ForceMode2D.Impulse);
         }

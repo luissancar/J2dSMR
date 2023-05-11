@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     public AudioSource sonidoSalto;
 
-
+    public int puntuacion;
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +79,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void incrementarPuntos(int cantidad)
+    {
+        puntuacion = puntuacion + cantidad;
+    }
 }
 
 

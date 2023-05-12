@@ -14,6 +14,7 @@ public class ControlPowerUP : MonoBehaviour
             sonido.Play();
             collision.gameObject.GetComponent<PlayerController>().
                 incrementarPuntos(cantidad);
+            GetComponent<TextoPosicion>().activo = true;
             Destroy(gameObject, 1);    
 
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource sonidoSalto;
 
     public int puntuacion;
+
+    public TextMeshProUGUI textPuntos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
     public void incrementarPuntos(int cantidad)
     {
         puntuacion = puntuacion + cantidad;
+        textPuntos.text =puntuacion.ToString();
     }
 }
 

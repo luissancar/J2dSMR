@@ -1,19 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TextoPosicion : MonoBehaviour
 {
-  
-    public Transform jugador;
-    public UnityEngine.UI.Text texto;
+    public GameObject objetoDondeMostrar;
+    public TextMeshProUGUI textoCanvas;
+    public int sumaY, sumaX;
+    public bool activo;
+    public string textoAMostrar;
 
-    void Update()
+
+    private void Start()
     {
-        texto.text = "dddd";
-        // Actualiza la posición del objeto de texto en función de la posición del jugador
-        texto.transform.position = Camera.main.WorldToScreenPoint(jugador.position);
+        textoCanvas.text = "";
+        activo = false;
     }
+
+    private void Update()
+    {
+        if (activo)
+        {
+            textoCanvas.text = textoAMostrar;
+            Vector3 posicionObjeto;
+            posicionObjeto = Camera.main.WorldToScreenPoint(
+                objetoDondeMostrar.transform.position );
+            textoCanvas.transform.position = new Vector3(
+                posicionObjeto.x + sumaX, posicionObjeto.y + sumaY,
+                posicionObjeto.z );
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        textoCanvas.text = "";
+    }
+
+
 }
 
 

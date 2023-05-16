@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI textPuntos;
 
+    public int vidas;
+    public TextMeshProUGUI textVidas;
+
+
+    private bool vulnerable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +35,8 @@ public class PlayerController : MonoBehaviour
         velocidad = 10;
         fuerzaSalto = 10;
         sprite = GetComponent<SpriteRenderer>();
+        textVidas.text = vidas.ToString();
+        vulnerable = true;
     }
 
     // Update is called once per frame
@@ -76,11 +84,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Enemigo")
+        if (collision.collider.tag == "Enemigo" && vulnerable)
         {
-            SceneManager.LoadScene(SceneManager
-            .GetActiveScene().buildIndex);
+            vulnerable = false;
+            vidas--;
+            textVidas.text = vidas.ToString();
+            sprite.color = Color.red;
+            Invoke("HacerVulnerable", 3f);
+            if (vidas<1)
+            {
+                SceneManager.LoadScene(SceneManager
+                .GetActiveScene().buildIndex);
+            }
         }
+    }
+
+    private void HacerVulnerable()
+    {
+        sprite.color= Color.white;
+        vulnerable= true;
+        
     }
 
     public void incrementarPuntos(int cantidad)

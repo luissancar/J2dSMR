@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private bool vulnerable;
 
+    public LifeCounterScript vidasScr;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,8 @@ public class PlayerController : MonoBehaviour
         velocidad = 10;
         fuerzaSalto = 10;
         sprite = GetComponent<SpriteRenderer>();
-        textVidas.text = vidas.ToString();
+        // textVidas.text = vidas.ToString();
+        textVidas.text = "";
         vulnerable = true;
     }
 
@@ -88,7 +91,8 @@ public class PlayerController : MonoBehaviour
         {
             vulnerable = false;
             vidas--;
-            textVidas.text = vidas.ToString();
+            vidasScr.gameObject.GetComponent<LifeCounterScript>().ActualizarVidas();
+            //textVidas.text = vidas.ToString();
             sprite.color = Color.red;
             Invoke("HacerVulnerable", 3f);
             if (vidas<1)

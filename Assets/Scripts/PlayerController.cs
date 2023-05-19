@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     public LifeCounterScript vidasScr;
 
+    public GameObject panelPerder;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,13 +96,19 @@ public class PlayerController : MonoBehaviour
             vidasScr.gameObject.GetComponent<LifeCounterScript>().ActualizarVidas();
             //textVidas.text = vidas.ToString();
             sprite.color = Color.red;
-            Invoke("HacerVulnerable", 3f);
+            Invoke("HacerVulnerable", 4f);
             if (vidas<1)
             {
-                SceneManager.LoadScene(SceneManager
-                .GetActiveScene().buildIndex);
+                sprite.enabled = false;
+                panelPerder.SetActive(true);
+                Invoke("IrMenu", 4f);
             }
         }
+    }
+
+    private void IrMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     private void HacerVulnerable()

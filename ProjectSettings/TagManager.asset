@@ -7,6 +7,7 @@ TagManager:
   - Suelo
   - New tag
   - Enemigo
+  - PowerUp
   layers:
   - Default
   - TransparentFX

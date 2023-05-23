@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         // textVidas.text = vidas.ToString();
         textVidas.text = "";
         vulnerable = true;
+        powerUps = CountObjectsWithTag("PowerUp");
     }
 
     // Update is called once per frame
@@ -65,7 +66,11 @@ public class PlayerController : MonoBehaviour
             Saltar();
         }
     }
-
+    private int CountObjectsWithTag(string tag)
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag(tag);
+        return objects.Length;
+    }
     public void Saltar()
     {
         sonidoSalto.Play();

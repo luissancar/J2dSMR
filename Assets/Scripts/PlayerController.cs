@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
     public LifeCounterScript vidasScr;
 
     public GameObject panelPerder;
+    public GameObject panelGanaste;
+
+    public int powerUps;
+
+    public Joystick joystick;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +52,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        entradaX = Input.GetAxis("Horizontal");
+        entradaX = Input.GetAxis("Horizontal") +
+            joystick.Horizontal;
         if (entradaX < 0)
             sprite.flipX = true;
         if (entradaX > 0) 
@@ -56,10 +62,15 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) &&
             tocandoSuelo)
         {
-            sonidoSalto.Play();
-            player.AddForce(Vector2.up * fuerzaSalto,
-                ForceMode2D.Impulse);
+            Saltar();
         }
+    }
+
+    public void Saltar()
+    {
+        sonidoSalto.Play();
+        player.AddForce(Vector2.up * fuerzaSalto,
+            ForceMode2D.Impulse);
     }
 
     private void FixedUpdate()
@@ -122,6 +133,12 @@ public class PlayerController : MonoBehaviour
     {
         puntuacion = puntuacion + cantidad;
         textPuntos.text =puntuacion.ToString();
+        if (--powerUps<1)
+        {
+            panelGanaste.SetActive(true);
+            sprite.enabled= false;
+            Invoke("IrMenu", 4f);
+        }
     }
 }
 
